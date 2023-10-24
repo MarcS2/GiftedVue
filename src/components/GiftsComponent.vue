@@ -1,6 +1,6 @@
 <template>
   <div @click="openGift(gift.id)" v-if="gift.opened == false" class="giftCard" role="button">
-    <div class=" unopened giftCard bg-light rounded border border-dark shadow">
+    <div class=" unopened giftCard bg-light rounded border border-2 border-dark shadow">
       <div class="catText">
         <p class="  text-center">hallo</p>
 
@@ -8,8 +8,8 @@
     </div>
 
   </div>
-  <div v-else-if="gift.opened == true" class="bg-light rounded border border-dark shadow">
-    <img class="img-fluid giftCard opened" :src="gift.url" alt="">
+  <div v-else-if="gift.opened == true" class="bg-light rounded border border-2 border-dark shadow">
+    <img class="rounded img-fluid giftCard opened" :src="gift.url" alt="">
     <div>
       <p>{{ gift.tag }}</p>
     </div>
