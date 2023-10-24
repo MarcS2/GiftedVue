@@ -1,13 +1,13 @@
 <template>
   <div class="component">
-    <form @sumbit.prevent()>
+    <form @submit.prevent="createGift(event)">
 
       <div class="form-floating my-3">
-        <input type="url" class="form-control" id="floatingInput" required maxlength="500">
+        <input v-model="urlForm" type="url" class="form-control" id="floatingInput" required maxlength="500">
         <label for="floatingInput">Image Url</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" required maxlength="100">
+        <input v-model="tagForm" type="String" class="form-control" id="floatingPassword" required maxlength="100">
         <label for="floatingPassword">Tag</label>
       </div>
       <div class="mt-2">
@@ -21,10 +21,32 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, ref } from 'vue';
+import Pop from "../utils/Pop";
+import { giftsService } from "../services/GiftsService";
+import { logger } from "../utils/Logger";
 export default {
+
   setup() {
-    return {}
+    let urlForm = ref('')
+    let tagForm = ref('')
+    return {
+      urlForm,
+      tagForm,
+      async createGift() {
+        try {
+          const url = urlForm.value
+          const tag = tagForm.value
+          logger.log(url, tag)
+
+          await giftsService.createGift(url, tag)
+          urlForm.value = ''
+          tagForm.value = ''
+        } catch (error) {
+          Pop.error(error)
+        }
+      }
+    }
   }
 };
 </script>

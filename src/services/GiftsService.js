@@ -13,6 +13,10 @@ class GiftsService {
     await api.put(`api/gifts/${giftId}`, { opened: true })
     this.getGifts()
   }
+  async createGift(url, tag) {
+    await api.post('api/gifts', { url: url, tag: tag })
+    this.getGifts()
+  }
 }
 
 export const giftsService = new GiftsService()

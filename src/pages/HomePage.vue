@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <section class="row">
       <div class="col-12">
-        <form @sumbit.prevent()>
+        <GiftForm />
 
-          <!-- <div class="form-floating my-3">
+        <!-- <div class="form-floating my-3">
             <input type="url" class="form-control" id="floatingInput" required maxlength="500">
             <label for="floatingInput">Image Url</label>
           </div>
@@ -44,13 +44,14 @@
 
 <script>
 import GiftsComponent from "../components/GiftsComponent.vue";
+import GiftForm from "../components/GiftForm.vue";
 import { AppState } from "../AppState";
 import { giftsService } from "../services/GiftsService";
 import Pop from "../utils/Pop";
 import { computed, onMounted, ref } from 'vue'
 export default {
   setup() {
-    const formData = ref('')
+
     async function getGifts() {
       try {
         await giftsService.getGifts()
@@ -64,19 +65,12 @@ export default {
     })
 
     return {
-      formData
       gifts: computed(() => AppState.gifts),
-      async openGift(giftId) {
-        try {
-          await giftsService.openGift(giftId)
-        } catch (error) {
-          Pop.error(error)
-        }
-      },
+
 
     }
   },
-  components: { GiftsComponent }
+  components: { GiftsComponent, GiftForm }
 }
 </script>
 
