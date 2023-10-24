@@ -22,7 +22,7 @@ import GiftForm from "../components/GiftForm.vue";
 import { AppState } from "../AppState";
 import { giftsService } from "../services/GiftsService";
 import Pop from "../utils/Pop";
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted } from 'vue'
 export default {
   setup() {
 

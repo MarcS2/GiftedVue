@@ -20,8 +20,6 @@
 <script>
 import Pop from "../utils/Pop";
 import { giftsService } from "../services/GiftsService";
-import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
 import { Gift } from "../models/Gift";
 export default {
   props: {

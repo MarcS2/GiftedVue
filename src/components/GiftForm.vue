@@ -20,8 +20,7 @@
 
 
 <script>
-import { AppState } from '../AppState';
-import { computed, reactive, onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Pop from "../utils/Pop";
 import { giftsService } from "../services/GiftsService";
 import { logger } from "../utils/Logger";

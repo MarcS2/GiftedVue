@@ -1,4 +1,3 @@
-import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 import { Gift } from "../models/Gift"
 import { AppState } from "../AppState"
